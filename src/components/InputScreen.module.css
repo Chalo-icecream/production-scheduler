@@ -1,0 +1,244 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* ── Shared section label ──────────────────────────────────────────── */
+.sectionLabel {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brown);
+  margin-bottom: 14px;
+  display: block;
+  float: none;
+}
+
+/* fieldset resets */
+.modeFieldset,
+.flavorsFieldset,
+.dateFieldset {
+  border: none;
+  padding: 0;
+  min-inline-size: 0;
+}
+
+/* ── Mode toggle ───────────────────────────────────────────────────── */
+.modeToggle {
+  display: flex;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: fit-content;
+}
+
+.modeBtn {
+  background: none;
+  border: none;
+  padding: 9px 20px;
+  color: var(--ink-muted);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.modeBtn + .modeBtn {
+  border-left: 1px solid var(--border-dark);
+}
+
+.modeBtnActive {
+  background: var(--brown);
+  color: #fff;
+}
+
+.modeBtn:not(.modeBtnActive):hover {
+  background: var(--cream-dark);
+  color: var(--ink);
+}
+
+.modeHint {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+/* ── Flavor list ───────────────────────────────────────────────────── */
+.flavorList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.flavorRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #fff;
+  gap: 16px;
+}
+
+.flavorRow + .flavorRow {
+  border-top: 1px solid var(--border);
+}
+
+.flavorMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.flavorName {
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--ink);
+}
+
+.flavorCity {
+  font-size: 12px;
+  color: var(--ink-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ── Pints input ───────────────────────────────────────────────────── */
+.pintsInputWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.pintsInput {
+  width: 72px;
+  padding: 8px 10px;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius);
+  background: var(--cream);
+  color: var(--ink);
+  text-align: center;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.pintsInput::-webkit-inner-spin-button,
+.pintsInput::-webkit-outer-spin-button {
+  appearance: none;
+}
+
+.pintsInput:focus {
+  outline: 2px solid var(--brown);
+  outline-offset: 1px;
+  border-color: var(--brown);
+}
+
+.pintsInputError {
+  border-color: var(--red);
+}
+
+.pintsUnit {
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+/* ── Practice toggle ───────────────────────────────────────────────── */
+.practiceToggle {
+  padding: 7px 16px;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius);
+  background: none;
+  color: var(--ink-muted);
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.practiceToggle:hover {
+  background: var(--cream-dark);
+  color: var(--ink);
+}
+
+.practiceToggleOn {
+  background: var(--brown);
+  border-color: var(--brown);
+  color: #fff;
+}
+
+.practiceToggleOn:hover {
+  background: var(--brown-dark);
+  border-color: var(--brown-dark);
+  color: #fff;
+}
+
+/* ── Pickup date ───────────────────────────────────────────────────── */
+.dateRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.dateInput {
+  padding: 9px 12px;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--ink);
+  min-width: 180px;
+}
+
+.dateInput:focus {
+  outline: 2px solid var(--brown);
+  outline-offset: 1px;
+  border-color: var(--brown);
+}
+
+.dateInputError {
+  border-color: var(--red);
+}
+
+/* ── Errors ────────────────────────────────────────────────────────── */
+.fieldError {
+  font-size: 12px;
+  color: var(--red);
+}
+
+.globalError {
+  font-size: 13px;
+  color: var(--red);
+  padding: 10px 14px;
+  border: 1px solid var(--red);
+  border-radius: var(--radius);
+  background: #fdf2f2;
+}
+
+/* ── Submit ────────────────────────────────────────────────────────── */
+.submitBtn {
+  align-self: flex-start;
+  padding: 12px 28px;
+  background: var(--brown);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  transition: background 0.15s;
+}
+
+.submitBtn:hover {
+  background: var(--brown-dark);
+}
+
+.submitBtn:focus-visible {
+  outline: 2px solid var(--brown);
+  outline-offset: 3px;
+}
