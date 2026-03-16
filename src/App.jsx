@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import InputScreen from './components/InputScreen.jsx'
+import YieldCalculator from './components/YieldCalculator.jsx'
 import './App.css'
 
 function App() {
@@ -11,8 +12,11 @@ function App() {
         <span className="app-header__eyebrow">Chalo</span>
         <h1 className="app-header__title">Production Tracker</h1>
       </header>
-      <main className="app-main">
-        <InputScreen onSubmit={setOrder} />
+      <main className={`app-main ${order ? 'app-main--wide' : ''}`}>
+        {order
+          ? <YieldCalculator order={order} onBack={() => setOrder(null)} />
+          : <InputScreen onSubmit={setOrder} />
+        }
       </main>
     </div>
   )

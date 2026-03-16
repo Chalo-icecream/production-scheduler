@@ -29,6 +29,7 @@
   color: var(--ink);
 }
 
+/* Input screen: narrow, centered */
 .app-main {
   flex: 1;
   padding: 40px;
@@ -36,6 +37,11 @@
   width: 100%;
   margin: 0 auto;
   background: var(--marigold);
+}
+
+/* Yield calculator: full width up to a generous max */
+.app-main--wide {
+  max-width: 1080px;
 }
 
 @media (max-width: 600px) {
