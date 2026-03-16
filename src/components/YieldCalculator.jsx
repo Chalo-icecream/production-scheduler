@@ -67,6 +67,7 @@ function FlavorCard({ flavor, pints, batches, isPractice, checkedIds, onToggleCh
   for (const comp of regularComponents) {
     for (const ing of comp.ingredients) {
       if (ing.source === 'from_make_ahead') continue
+      if (ing.amount_per_quart === 0) continue       // skip pinch/trace amounts
       const key = ing.name
       if (!ingTotals[key]) {
         ingTotals[key] = { count: 0, rawTotal: 0, unit: ing.unit, hint: null, lastIngId: null }
@@ -162,7 +163,7 @@ function FlavorCard({ flavor, pints, batches, isPractice, checkedIds, onToggleCh
 
             {byDay[day].map(comp => {
               const visibleIngredients = comp.ingredients.filter(
-                i => i.source !== 'from_make_ahead'
+                i => i.source !== 'from_make_ahead' && i.amount_per_quart !== 0
               )
               if (visibleIngredients.length === 0) return null
               return (
