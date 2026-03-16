@@ -350,7 +350,7 @@ export const FLAVORS = [
         id: "calcutta_honey_milk_jam",
         name: "Honey milk jam",
         make_ahead: true,
-        batch_makes: "~600g",  // approximate yield after reduction
+        batch_makes: "~285g",  // approximate yield after reduction (1L milk → ~275–300g)
         keeps: "3 weeks",
         uht_ok: true,          // whole milk in this component can be UHT
         ingredients: [
