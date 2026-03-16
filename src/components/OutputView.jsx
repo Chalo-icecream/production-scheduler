@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import YieldCalculator from './YieldCalculator.jsx'
 import ShoppingList from './ShoppingList.jsx'
+import Schedule from './Schedule.jsx'
+import Manifest from './Manifest.jsx'
 import styles from './OutputView.module.css'
 
 const TABS = [
@@ -46,19 +48,11 @@ export default function OutputView({ order, onBack }) {
       <div className={styles.panel}>
         {activeTab === 'yield'    && <YieldCalculator order={order} />}
         {activeTab === 'shopping' && <ShoppingList    order={order} />}
-        {activeTab === 'schedule' && <ComingSoon label="Production Schedule" />}
-        {activeTab === 'manifest' && <ComingSoon label="Pickup Manifest"     />}
+        {activeTab === 'schedule' && <Schedule order={order} />}
+        {activeTab === 'manifest' && <Manifest order={order} />}
       </div>
 
     </div>
   )
 }
 
-function ComingSoon({ label }) {
-  return (
-    <div className={styles.comingSoon}>
-      <p className={styles.comingSoonLabel}>{label}</p>
-      <p className={styles.comingSoonSub}>Coming in the next build</p>
-    </div>
-  )
-}

@@ -1,0 +1,167 @@
+/* ── Wrapper ──────────────────────────────────────────────────────────────── */
+
+.manifestWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Print bar (screen only) ──────────────────────────────────────────────── */
+
+.printBar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.printBtn {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--green);
+  border: none;
+  border-radius: var(--radius);
+  padding: 8px 18px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.15s;
+}
+
+.printBtn:hover {
+  background: var(--green-dark);
+}
+
+/* ── Manifest document ────────────────────────────────────────────────────── */
+
+.manifestDoc {
+  background: #fff;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+
+.manifestHeader {
+  padding: 28px 32px 24px;
+  border-bottom: 2px solid var(--border-dark);
+  background: var(--green);
+  color: #fff;
+}
+
+.manifestBrand {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 4px;
+}
+
+.manifestTitle {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.manifestMeta {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ── Table ────────────────────────────────────────────────────────────────── */
+
+.manifestTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.thFlavor,
+.thNum {
+  padding: 11px 20px 11px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  background: var(--card);
+}
+
+.thNum {
+  text-align: right;
+}
+
+/* Table body */
+
+.manifestTable tbody tr:not(:last-child) td {
+  border-bottom: 1px solid var(--border);
+}
+
+.tdFlavor {
+  padding: 16px 20px;
+  color: var(--ink);
+  display: table-cell;
+  vertical-align: top;
+}
+
+.tdFlavor strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 2px;
+}
+
+.tdDescriptor {
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+.tdNum {
+  padding: 16px 20px;
+  text-align: right;
+  color: var(--ink);
+  vertical-align: middle;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* Totals row */
+
+.totalRow td {
+  border-top: 2px solid var(--border-dark);
+  padding: 12px 20px;
+  background: var(--card);
+  font-weight: 600;
+}
+
+.tdTotalLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+/* ── Footer ───────────────────────────────────────────────────────────────── */
+
+.manifestFooter {
+  padding: 12px 20px;
+  font-size: 11px;
+  color: var(--ink-muted);
+  border-top: 1px solid var(--border);
+  text-align: right;
+}
+
+/* ── Print styles ─────────────────────────────────────────────────────────── */
+
+@media print {
+  .printBar {
+    display: none;
+  }
+}
