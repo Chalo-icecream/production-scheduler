@@ -4,11 +4,12 @@
 // 1 quart = 2 pints | each batch yields exactly 1 quart
 
 // Source categories:
-//   "uht_ok"    — shelf-stable, can buy anytime
-//   "fresh_only"— must buy within 2 days of churn, spoilage warning on shopping list
-//   "pantry"    — dry goods/shelf-stable
-//   "specialty" — Indian grocery / specialty store
-//   "produce"   — fresh produce
+//   "uht_ok"       — shelf-stable, can buy anytime
+//   "fresh_only"   — must buy within 2 days of churn, spoilage warning on shopping list
+//   "pantry"       — dry goods/shelf-stable
+//   "specialty"    — Indian grocery / specialty store
+//   "produce"      — fresh produce
+//   "from_make_ahead" — drawn from a make_ahead component; not purchased, not on shopping list
 
 // Known unit costs (used for cost estimation when filled in)
 export const UNIT_COSTS = {
@@ -275,16 +276,20 @@ export const FLAVORS = [
     timeline_days: 3,
     components: [
       {
+        // ── MAKE-AHEAD COMPONENT ──────────────────────────────────────
+        // Scaled independently (one grind session). Not tied to the
+        // production schedule. Reference via source: "from_make_ahead"
+        // in consuming components.
         id: "calcutta_chai_masala",
         name: "Chai masala blend",
-        day: 1,
         make_ahead: true,
-        make_ahead_notes: "Keeps up to 4 months. Can be made any time.",
+        batch_makes: "85g",   // 30+20+10+10+10+5
+        keeps: "4 months",
         ingredients: [
           {
             id: "calcutta_masala_cardamom",
             name: "Cardamom pods",
-            amount_per_quart: 30,
+            amount_per_batch: 30,
             unit: "g",
             source: "specialty",
             cost_per_unit: null,
@@ -293,7 +298,7 @@ export const FLAVORS = [
           {
             id: "calcutta_masala_cinnamon",
             name: "Cinnamon sticks",
-            amount_per_quart: 20,
+            amount_per_batch: 20,
             unit: "g",
             source: "specialty",
             cost_per_unit: null,
@@ -302,7 +307,7 @@ export const FLAVORS = [
           {
             id: "calcutta_masala_cloves",
             name: "Cloves",
-            amount_per_quart: 10,
+            amount_per_batch: 10,
             unit: "g",
             source: "specialty",
             cost_per_unit: null,
@@ -311,7 +316,7 @@ export const FLAVORS = [
           {
             id: "calcutta_masala_pepper",
             name: "Black peppercorns",
-            amount_per_quart: 10,
+            amount_per_batch: 10,
             unit: "g",
             source: "pantry",
             cost_per_unit: null,
@@ -320,7 +325,7 @@ export const FLAVORS = [
           {
             id: "calcutta_masala_ginger",
             name: "Dried ginger",
-            amount_per_quart: 10,
+            amount_per_batch: 10,
             unit: "g",
             source: "pantry",
             cost_per_unit: null,
@@ -329,37 +334,40 @@ export const FLAVORS = [
           {
             id: "calcutta_masala_fennel",
             name: "Fennel seeds",
-            amount_per_quart: 5,
+            amount_per_batch: 5,
             unit: "g",
             source: "pantry",
             cost_per_unit: null,
             notes: null,
           },
         ],
-        // Blend yields a batch; use 6g per quart
-        usage_per_quart: { amount: 6, unit: "g" },
       },
       {
+        // ── MAKE-AHEAD COMPONENT ──────────────────────────────────────
+        // One pot per session; UHT milk is fine. Not tied to the
+        // production schedule. Reference via source: "from_make_ahead"
+        // in consuming components.
         id: "calcutta_honey_milk_jam",
         name: "Honey milk jam",
-        day: 1,
         make_ahead: true,
-        make_ahead_notes: "Keeps up to 3 weeks refrigerated. UHT milk OK — can buy anytime. Can be made up to 2 weeks ahead.",
+        batch_makes: "~600g",  // approximate yield after reduction
+        keeps: "3 weeks",
+        uht_ok: true,          // whole milk in this component can be UHT
         ingredients: [
           {
             id: "calcutta_hmj_milk",
             name: "Whole milk",
-            // 1000ml ≈ 33.8 fl oz — stored as fl_oz per schema
-            amount_per_quart: 33.8,
+            // Recipe: 1000ml → 33.8 fl oz
+            amount_per_batch: 33.8,
             unit: "fl_oz",
             source: "uht_ok",
             cost_per_unit: null,
-            notes: "UHT milk is fine for jam; buy anytime",
+            notes: "UHT milk is fine; buy anytime",
           },
           {
             id: "calcutta_hmj_sugar",
             name: "Sugar",
-            amount_per_quart: 100,
+            amount_per_batch: 100,
             unit: "g",
             source: "pantry",
             cost_per_unit: null,
@@ -368,7 +376,7 @@ export const FLAVORS = [
           {
             id: "calcutta_hmj_honey",
             name: "Honey",
-            amount_per_quart: 170,
+            amount_per_batch: 170,
             unit: "g",
             source: "pantry",
             cost_per_unit: null,
@@ -377,7 +385,7 @@ export const FLAVORS = [
           {
             id: "calcutta_hmj_baking_soda",
             name: "Baking soda",
-            amount_per_quart: 1,
+            amount_per_batch: 1,
             unit: "g",
             source: "pantry",
             cost_per_unit: null,
@@ -386,15 +394,13 @@ export const FLAVORS = [
           {
             id: "calcutta_hmj_salt",
             name: "Salt",
-            amount_per_quart: 1,
+            amount_per_batch: 1,
             unit: "g",
             source: "pantry",
             cost_per_unit: null,
             notes: null,
           },
         ],
-        // Jam yields a batch; use 200g per quart in chai base
-        usage_per_quart: { amount: 200, unit: "g" },
       },
       {
         id: "calcutta_chai_base",
@@ -424,13 +430,13 @@ export const FLAVORS = [
           },
           {
             id: "calcutta_base_hmj",
-            name: "Honey milk jam",
+            name: "Honey milk jam (from jam)",
             amount_per_quart: 200,
             unit: "g",
-            source: "pantry",  // treated as pantry since it's a made-ahead component
-            cost_per_unit: null,
-            notes: "From make-ahead component",
+            source: "from_make_ahead",
             from_component: "calcutta_honey_milk_jam",
+            cost_per_unit: null,
+            notes: null,
           },
           {
             id: "calcutta_base_honey",
@@ -470,13 +476,13 @@ export const FLAVORS = [
           },
           {
             id: "calcutta_base_masala",
-            name: "Chai masala",
+            name: "Chai masala (from blend)",
             amount_per_quart: 6,
             unit: "g",
-            source: "pantry",  // treated as pantry since it's a made-ahead component
-            cost_per_unit: null,
-            notes: "From make-ahead component",
+            source: "from_make_ahead",
             from_component: "calcutta_chai_masala",
+            cost_per_unit: null,
+            notes: null,
           },
           {
             id: "calcutta_base_salt",
