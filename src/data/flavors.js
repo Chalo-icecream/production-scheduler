@@ -18,6 +18,7 @@ export const UNIT_COSTS = {
   cream_cheese:   { cost: 3.99, unit_size: 226, unit: "g",     unit_label: "226g pkg"              },
   honeydew_flesh: { cost: 3.99, unit_size: 900, unit: "g",     unit_label: "melon (~900g usable)"  },
   honey:          { cost: 5.89, unit_size: 340, unit: "g",     unit_label: "340g jar"              },
+  butter:         { cost: 1.50, unit_size: 113, unit: "g",     unit_label: "1 stick (113g)"        },  // ~est.
 };
 
 export const FLAVORS = [

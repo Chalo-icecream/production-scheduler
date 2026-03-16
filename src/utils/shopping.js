@@ -9,6 +9,7 @@ const COST_KEY_MAP = {
   'Cream cheese':   'cream_cheese',
   'Honeydew flesh': 'honeydew_flesh',
   'Honey':          'honey',
+  'Butter':         'butter',
 }
 
 // Sourcing group definitions in shopping-list display order.
