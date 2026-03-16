@@ -6,10 +6,11 @@
 
 .app-header {
   padding: 32px 40px 24px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-dark);
   display: flex;
   flex-direction: column;
   gap: 4px;
+  background: var(--card);
 }
 
 .app-header__eyebrow {
@@ -18,7 +19,7 @@
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--brown);
+  color: var(--green);
 }
 
 .app-header__title {
@@ -34,6 +35,7 @@
   max-width: 680px;
   width: 100%;
   margin: 0 auto;
+  background: var(--marigold);
 }
 
 @media (max-width: 600px) {

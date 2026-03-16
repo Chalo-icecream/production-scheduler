@@ -29,6 +29,7 @@ export const FLAVORS = [
     id: "shimla",
     name: "Shimla",
     city: "Shimla",
+    descriptor: "Honeydew · Genmaicha · Cucumber Jalapeño",
     timeline_days: 2,
     components: [
       {
@@ -273,6 +274,7 @@ export const FLAVORS = [
     id: "calcutta",
     name: "Calcutta",
     city: "Calcutta",
+    descriptor: "Chai · Honey Milk Jam · Brown Butter Tahini Fudge",
     timeline_days: 3,
     components: [
       {

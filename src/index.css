@@ -5,16 +5,18 @@
 }
 
 :root {
-  --cream:        #FAF7F2;
-  --cream-dark:   #F0EBE1;
-  --brown:        #8B7355;
-  --brown-light:  #B5976E;
-  --brown-dark:   #5C4A30;
-  --ink:          #1C1712;
-  --ink-muted:    #6B5E4E;
-  --border:       #DDD4C4;
-  --border-dark:  #C4B49A;
-  --red:          #B84040;
+  /* Brand palette — Chalo / Hotplate aesthetic */
+  --marigold:       #F2A025;   /* page background — warm amber-gold */
+  --marigold-dark:  #D98A18;   /* hover states on marigold surfaces */
+  --green:          #2D5A3D;   /* primary accent, buttons, active states */
+  --green-dark:     #1B4332;   /* button hover */
+  --green-light:    #3D7A54;   /* outlined button hover fill */
+  --card:           #FFF8EE;   /* panel / card background on marigold */
+  --ink:            #1A1A1A;   /* body text */
+  --ink-muted:      #5C4E38;   /* secondary text, labels */
+  --border:         #E8D9BC;   /* card internal borders */
+  --border-dark:    #C8B48A;   /* input borders */
+  --red:            #B84040;   /* error states */
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body:    'Inter', system-ui, sans-serif;
@@ -28,7 +30,7 @@ html, body, #root {
 }
 
 body {
-  background-color: var(--cream);
+  background-color: var(--marigold);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 15px;

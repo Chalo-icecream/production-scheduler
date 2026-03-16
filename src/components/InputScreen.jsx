@@ -127,7 +127,7 @@ export default function InputScreen({ onSubmit }) {
             <div key={flavor.id} className={styles.flavorRow}>
               <div className={styles.flavorMeta}>
                 <span className={styles.flavorName}>{flavor.name}</span>
-                <span className={styles.flavorCity}>{flavor.city}</span>
+                <span className={styles.flavorDescriptor}>{flavor.descriptor}</span>
               </div>
 
               {isPractice ? (
@@ -149,7 +149,7 @@ export default function InputScreen({ onSubmit }) {
                     inputMode="numeric"
                     min="0"
                     step="1"
-                    placeholder="0"
+                    placeholder="—"
                     value={pints[flavor.id]}
                     onChange={(e) => handlePintsChange(flavor.id, e.target.value)}
                     className={`${styles.pintsInput} ${
