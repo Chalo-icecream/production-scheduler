@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, Fragment } from 'react'
 import { FLAVOR_MAP } from '../data/flavors.js'
 import {
   getBatchCount,
@@ -70,6 +70,28 @@ function FlavorCard({ flavor, pints, batches, isPractice, checkedIds, onToggleCh
   const days = Object.keys(byDay).map(Number).sort((a, b) => a - b)
 
   const { total: costTotal, missing: costMissing } = estimateCost(flavor, batches)
+
+  // Pre-compute cross-component ingredient totals.
+  // Iterate in render order (regularComponents is already sorted by day) so
+  // lastIngId ends up on the last-rendered occurrence of each name.
+  const ingTotals = {}
+  for (const comp of regularComponents) {
+    for (const ing of comp.ingredients) {
+      if (ing.source === 'from_make_ahead') continue
+      const key = ing.name
+      if (!ingTotals[key]) {
+        ingTotals[key] = { count: 0, rawTotal: 0, unit: ing.unit, hint: null, lastIngId: null }
+      }
+      ingTotals[key].count++
+      ingTotals[key].rawTotal += ing.amount_per_quart
+      ingTotals[key].hint      = ing.total_hint ?? ingTotals[key].hint
+      ingTotals[key].lastIngId = ing.id
+    }
+  }
+  // Keep only ingredients that appear in 2+ components
+  const dupTotals = Object.fromEntries(
+    Object.entries(ingTotals).filter(([, v]) => v.count >= 2)
+  )
 
   return (
     <article className={styles.flavorCard}>
@@ -160,8 +182,22 @@ function FlavorCard({ flavor, pints, batches, isPractice, checkedIds, onToggleCh
                   <ul className={styles.ingredientList}>
                     {visibleIngredients.map(ing => {
                       const scaled = scaleAmount(ing.amount_per_quart, batches, ing.unit)
+                      const dup    = dupTotals[ing.name]
+                      const isLast = dup?.lastIngId === ing.id
+                      const scaledTotal = isLast
+                        ? scaleAmount(dup.rawTotal, batches, dup.unit)
+                        : null
                       return (
-                        <IngredientRow key={ing.id} ingredient={ing} scaled={scaled} />
+                        <Fragment key={ing.id}>
+                          <IngredientRow ingredient={ing} scaled={scaled} />
+                          {isLast && (
+                            <li className={styles.totalCallout} aria-label={`Total ${ing.name}`}>
+                              ↳ Total {ing.name.toLowerCase()} needed:{' '}
+                              <strong>{formatAmount(scaledTotal, dup.unit)}</strong>
+                              {dup.hint && <> — {dup.hint}</>}
+                            </li>
+                          )}
+                        </Fragment>
                       )
                     })}
                   </ul>

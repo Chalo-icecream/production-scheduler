@@ -144,6 +144,7 @@ export const FLAVORS = [
             source: "produce",
             cost_per_unit: null,
             notes: null,
+            total_hint: "1 melon yields ~900g usable flesh",
           },
         ],
       },
@@ -161,6 +162,7 @@ export const FLAVORS = [
             source: "produce",
             cost_per_unit: null,
             notes: null,
+            total_hint: "1 melon yields ~900g usable flesh",
           },
           {
             id: "shimla_sorbet_sugar",

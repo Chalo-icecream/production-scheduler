@@ -270,6 +270,22 @@
   border-bottom: none;
 }
 
+.totalCallout {
+  list-style: none;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--ink-muted);
+  padding: 5px 0 8px 12px;
+  border-left: 2px solid var(--border-dark);
+  margin: 2px 0 6px;
+}
+
+.totalCallout strong {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ink);
+}
+
 .ingName {
   font-size: 14px;
   color: var(--ink);
