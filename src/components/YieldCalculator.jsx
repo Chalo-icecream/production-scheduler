@@ -10,7 +10,7 @@ import {
 } from '../utils/scale.js'
 import styles from './YieldCalculator.module.css'
 
-export default function YieldCalculator({ order, onBack }) {
+export default function YieldCalculator({ order }) {
   const [checkedIds, setCheckedIds] = useState(new Set())
   const isPractice = order.mode === 'practice'
 
@@ -23,17 +23,7 @@ export default function YieldCalculator({ order, onBack }) {
   }
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.topBar}>
-        <button className={styles.backBtn} type="button" onClick={onBack}>
-          ← Back to order
-        </button>
-        <span className={styles.modeBadge}>
-          {isPractice ? 'Practice round' : 'Drop planning'}
-        </span>
-      </div>
-
-      <div className={`${styles.flavorGrid} ${order.flavors.length > 1 ? styles.flavorGridMulti : ''}`}>
+    <div className={`${styles.flavorGrid} ${order.flavors.length > 1 ? styles.flavorGridMulti : ''}`}>
         {order.flavors.map(({ flavorId, pints }) => {
           const flavor     = FLAVOR_MAP[flavorId]
           const batches    = isPractice ? 1 : getBatchCount(pints)
@@ -49,7 +39,6 @@ export default function YieldCalculator({ order, onBack }) {
             />
           )
         })}
-      </div>
     </div>
   )
 }

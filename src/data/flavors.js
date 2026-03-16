@@ -11,13 +11,13 @@
 //   "produce"      — fresh produce
 //   "from_make_ahead" — drawn from a make_ahead component; not purchased, not on shopping list
 
-// Known unit costs (used for cost estimation when filled in)
+// Known unit costs (used for cost estimation and buy-quantity suggestions)
 export const UNIT_COSTS = {
-  whole_milk: { cost: 6.49, unit_size: 64, unit: "fl_oz" },       // $6.49 per 64 fl oz
-  heavy_cream: { cost: 6.99, unit_size: 32, unit: "fl_oz" },      // $6.99 per 32 fl oz
-  cream_cheese: { cost: 3.99, unit_size: 226, unit: "g" },        // $3.99 per 226g
-  honeydew_flesh: { cost: 3.99, unit_size: 1400, unit: "g" },     // $3.99 per melon (~1400g usable)
-  honey: { cost: 5.89, unit_size: 340, unit: "g" },               // $5.89 per 340g
+  whole_milk:     { cost: 6.49, unit_size: 64,  unit: "fl_oz", unit_label: "64 fl oz carton"       },
+  heavy_cream:    { cost: 6.99, unit_size: 32,  unit: "fl_oz", unit_label: "32 fl oz carton"       },
+  cream_cheese:   { cost: 3.99, unit_size: 226, unit: "g",     unit_label: "226g pkg"              },
+  honeydew_flesh: { cost: 3.99, unit_size: 900, unit: "g",     unit_label: "melon (~900g usable)"  },
+  honey:          { cost: 5.89, unit_size: 340, unit: "g",     unit_label: "340g jar"              },
 };
 
 export const FLAVORS = [

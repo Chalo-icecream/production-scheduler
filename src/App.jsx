@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import InputScreen from './components/InputScreen.jsx'
-import YieldCalculator from './components/YieldCalculator.jsx'
+import OutputView from './components/OutputView.jsx'
 import './App.css'
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       </header>
       <main className={`app-main ${order ? 'app-main--wide' : ''}`}>
         {order
-          ? <YieldCalculator order={order} onBack={() => setOrder(null)} />
+          ? <OutputView order={order} onBack={() => setOrder(null)} />
           : <InputScreen onSubmit={setOrder} />
         }
       </main>

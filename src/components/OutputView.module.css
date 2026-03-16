@@ -1,0 +1,113 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Top bar ──────────────────────────────────────────────────────────────── */
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+}
+
+.backBtn:hover {
+  color: var(--ink);
+}
+
+.modeBadge {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  background: var(--card);
+  border: 1px solid var(--border-dark);
+  border-radius: 20px;
+  padding: 4px 12px;
+}
+
+/* ── Tab bar ──────────────────────────────────────────────────────────────── */
+
+.tabBar {
+  display: flex;
+  border-bottom: 2px solid var(--border-dark);
+  margin-bottom: 28px;
+  overflow-x: auto;
+  scrollbar-width: none;         /* Firefox */
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabBar::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;           /* overlaps tabBar border */
+  padding: 10px 20px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.tab:hover {
+  color: var(--ink);
+}
+
+.tabActive {
+  color: var(--green);
+  border-bottom-color: var(--green);
+}
+
+/* ── Panel ────────────────────────────────────────────────────────────────── */
+
+.panel {
+  min-height: 200px;
+}
+
+/* ── Coming soon ──────────────────────────────────────────────────────────── */
+
+.comingSoon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 64px 24px;
+  background: var(--card);
+  border: 1px dashed var(--border-dark);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.comingSoonLabel {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--ink);
+}
+
+.comingSoonSub {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ink-muted);
+}
