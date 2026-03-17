@@ -52,12 +52,15 @@ button {
   cursor: pointer;
 }
 
-/* ── Print isolation for Manifest ─────────────────────────────────────────── */
+/* ── Print isolation ──────────────────────────────────────────────────────── */
+/* Manifest ([data-manifest]) and Flyer ([data-flyer]) each print in isolation */
 
 @media print {
   body * {
     visibility: hidden;
   }
+
+  /* Manifest */
   [data-manifest],
   [data-manifest] * {
     visibility: visible;
@@ -68,4 +71,22 @@ button {
     top: 0;
     width: 100%;
   }
+
+  /* Flyer — remove screen scale, print at native CSS pixel dimensions */
+  [data-flyer],
+  [data-flyer] * {
+    visibility: visible;
+  }
+  [data-flyer] {
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: none !important;
+    width: 8.5in !important;
+    box-shadow: none !important;
+  }
+}
+
+@page {
+  margin: 0;
 }

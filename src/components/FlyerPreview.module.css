@@ -1,0 +1,163 @@
+/* ── Scale wrapper ────────────────────────────────────────────────────────── */
+
+/* Measured div — ResizeObserver uses this width to compute scale.
+   Height set via inline style to match scaled flyer height.
+   overflow:hidden clips any rounding overhang. */
+.scaleWrapper {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+/* ── Flyer document ───────────────────────────────────────────────────────── */
+
+.flyer {
+  font-family: 'Outfit', sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding: 64px 72px 56px;
+  box-sizing: border-box;
+  /* Drop shadow visible on screen (not in print) */
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+}
+
+/* ── Hero section ─────────────────────────────────────────────────────────── */
+
+.hero {
+  flex-shrink: 0;
+  margin-bottom: 40px;
+}
+
+.brand {
+  font-family: 'Outfit', sans-serif;
+  font-size: 200px;
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  margin-bottom: 20px;
+}
+
+.tagline {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  max-width: 520px;
+  margin-bottom: 36px;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.categoryLabel {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ── Flavor list ──────────────────────────────────────────────────────────── */
+
+.flavors {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: 36px;
+}
+
+.flavorList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.flavorLine {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.flavorLead {
+  font-weight: 700;
+}
+
+.flavorRest {
+  font-weight: 400;
+}
+
+.noFlavors {
+  font-size: 20px;
+  font-style: italic;
+}
+
+/* ── Order card ───────────────────────────────────────────────────────────── */
+
+.orderCard {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 28px 36px 32px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.orderLabel {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.qrCanvas {
+  display: block;
+  border-radius: 6px;
+}
+
+.orderUrl {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.orderMeta {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.discountCode {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.discountCode strong {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+/* ── Half-page overrides ──────────────────────────────────────────────────── */
+/* Applied when form.size === 'half'; flyer height is 528px (5.5in).
+   We tighten spacing and shrink the CHALO headline. */
+
+/* Since we can't use props in CSS Modules easily, the half-page scaling
+   is handled naturally: the flyer is 816×528, the scale wrapper compresses
+   everything proportionally via the scale transform. */

@@ -4,13 +4,27 @@
   flex-direction: column;
 }
 
+/* ── Header ──────────────────────────────────────────────────────────────── */
+
 .app-header {
-  padding: 32px 40px 24px;
+  padding: 0 40px;
   border-bottom: 1px solid var(--border-dark);
+  background: var(--card);
+}
+
+.app-header__top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 0 0;
+}
+
+.app-header__brand {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  background: var(--card);
+  padding-bottom: 20px;
 }
 
 .app-header__eyebrow {
@@ -29,6 +43,39 @@
   color: var(--ink);
 }
 
+/* ── Nav tabs ─────────────────────────────────────────────────────────────── */
+
+.app-nav {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+}
+
+.app-nav__btn {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.app-nav__btn:hover {
+  color: var(--ink);
+}
+
+.app-nav__btn--active {
+  color: var(--green);
+  border-bottom-color: var(--green);
+}
+
+/* ── Main area ────────────────────────────────────────────────────────────── */
+
 /* Input screen: narrow, centered */
 .app-main {
   flex: 1;
@@ -39,14 +86,33 @@
   background: var(--marigold);
 }
 
-/* Yield calculator: full width up to a generous max */
+/* Tracker output + Flyer: full width up to generous max */
 .app-main--wide {
   max-width: 1080px;
 }
 
+/* Flyer generator: needs more room for side-by-side form + preview */
+.app-main--flyer {
+  max-width: 1320px;
+}
+
 @media (max-width: 600px) {
   .app-header {
-    padding: 24px 20px 16px;
+    padding: 0 20px;
+  }
+  .app-header__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding-top: 20px;
+  }
+  .app-header__brand {
+    padding-bottom: 0;
+  }
+  .app-nav {
+    width: 100%;
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
   }
   .app-main {
     padding: 28px 20px;

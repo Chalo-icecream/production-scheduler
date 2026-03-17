@@ -1,0 +1,219 @@
+/* ── Page layout: form left + preview right ───────────────────────────────── */
+
+.layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* ── Form panel ───────────────────────────────────────────────────────────── */
+
+.formPanel {
+  flex-shrink: 0;
+  width: 280px;
+  background: var(--card);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: sticky;
+  top: 24px;
+}
+
+.formTitle {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+/* ── Fields ───────────────────────────────────────────────────────────────── */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.fieldLabel {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  display: block;
+}
+
+.input,
+.select {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+
+.input:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(45, 90, 61, 0.15);
+}
+
+/* ── Size toggle ──────────────────────────────────────────────────────────── */
+
+.toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.toggleBtn {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  background: #fff;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius);
+  padding: 9px 8px 7px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.toggleBtn:hover {
+  border-color: var(--green);
+  color: var(--ink);
+}
+
+.toggleActive {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+.toggleActive:hover {
+  background: var(--green-dark);
+  border-color: var(--green-dark);
+  color: #fff;
+}
+
+.toggleSub {
+  font-size: 10px;
+  font-weight: 400;
+  opacity: 0.75;
+  letter-spacing: 0.04em;
+}
+
+/* ── Flavor checkboxes ────────────────────────────────────────────────────── */
+
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--green);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.checkboxLabel {
+  font-size: 14px;
+  color: var(--ink);
+}
+
+/* ── Print button ─────────────────────────────────────────────────────────── */
+
+.printBtn {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--green);
+  border: none;
+  border-radius: var(--radius);
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 8px;
+  letter-spacing: 0.04em;
+  transition: background 0.15s;
+}
+
+.printBtn:hover {
+  background: var(--green-dark);
+}
+
+/* ── Preview panel ────────────────────────────────────────────────────────── */
+
+.previewPanel {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.previewHeading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.previewLabel {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.previewSize {
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 780px) {
+  .layout {
+    flex-direction: column;
+  }
+  .formPanel {
+    width: 100%;
+    position: static;
+  }
+}
+
+/* ── Print: hide everything except the flyer ──────────────────────────────── */
+
+@media print {
+  .formPanel,
+  .previewHeading {
+    display: none !important;
+  }
+}
