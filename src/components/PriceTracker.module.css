@@ -1,0 +1,311 @@
+/* ── Wrap ─────────────────────────────────────────────────────────────────── */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Store header ─────────────────────────────────────────────────────────── */
+
+.storeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--card);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+}
+
+.storeInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.storeName {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.updatedAt {
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+/* ── Fetch button ─────────────────────────────────────────────────────────── */
+
+.fetchBtn {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: var(--green);
+  border: none;
+  border-radius: var(--radius);
+  padding: 9px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.fetchBtn:hover:not(:disabled) {
+  background: var(--green-dark);
+}
+
+.fetchBtnLoading {
+  opacity: 0.65;
+  cursor: default;
+}
+
+/* ── Error + alert banners ────────────────────────────────────────────────── */
+
+.errorBanner {
+  background: #fdf0f0;
+  border: 1px solid #e8b4b4;
+  border-left: 4px solid var(--red);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--red);
+}
+
+.alertBanner {
+  background: #fffbea;
+  border: 1px solid #f0d060;
+  border-left: 4px solid #D4A017;
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #5a4a00;
+}
+
+/* ── Table wrapper ────────────────────────────────────────────────────────── */
+
+.tableWrap {
+  background: #fff;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+/* ── Table head ───────────────────────────────────────────────────────────── */
+
+.thIngredient,
+.thProduct,
+.thPrice {
+  padding: 11px 20px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  background: var(--card);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.thPrice {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ── Category header row ──────────────────────────────────────────────────── */
+
+.catRow td {
+  padding: 10px 20px 7px;
+  background: var(--card);
+  border-top: 2px solid var(--border-dark);
+}
+
+.catLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.catNote {
+  font-size: 11px;
+  color: var(--ink-muted);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ── Data rows ────────────────────────────────────────────────────────────── */
+
+.row {
+  border-bottom: 1px solid var(--border);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.tdIngredient {
+  padding: 13px 20px;
+  font-weight: 500;
+  color: var(--ink);
+  width: 160px;
+}
+
+.dairyTag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green);
+  background: rgba(45, 90, 61, 0.1);
+  border-radius: 3px;
+  padding: 1px 5px;
+  margin-left: 7px;
+  vertical-align: middle;
+}
+
+.tdProduct {
+  padding: 13px 20px;
+  color: var(--ink);
+  max-width: 300px;
+}
+
+.productDesc {
+  display: block;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 280px;
+}
+
+.productSize {
+  display: block;
+  font-size: 11px;
+  color: var(--ink-muted);
+  margin-top: 1px;
+}
+
+.tdPrice {
+  padding: 13px 20px;
+  text-align: right;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.tdSale {
+  padding: 13px 20px;
+  text-align: right;
+  white-space: nowrap;
+  width: 90px;
+}
+
+.salePrice {
+  font-weight: 700;
+  color: #2a7a2a;
+  background: rgba(42, 122, 42, 0.08);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.noSale {
+  color: var(--border-dark);
+}
+
+/* ── State cells (loading / idle / error) ────────────────────────────────── */
+
+.tdState {
+  padding: 13px 20px;
+  color: var(--ink-muted);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.loadingDots {
+  color: var(--ink-muted);
+}
+
+.tdError {
+  padding: 13px 20px;
+  font-size: 13px;
+  color: var(--red);
+}
+
+/* ── Idle prompt ──────────────────────────────────────────────────────────── */
+
+.idleNote {
+  font-size: 13px;
+  color: var(--ink-muted);
+  text-align: center;
+  padding: 8px 0 4px;
+  line-height: 1.5;
+}
+
+/* ── Pre-drop shopping note ───────────────────────────────────────────────── */
+
+.shoppingNote {
+  background: var(--card);
+  border: 1px solid var(--border-dark);
+  border-left: 4px solid var(--green);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+}
+
+.shoppingNoteTitle {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 12px;
+}
+
+.shoppingList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.shoppingItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.shoppingItemName {
+  font-weight: 400;
+}
+
+.shoppingItemPrice {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.shoppingTotal {
+  font-size: 13px;
+  color: var(--ink-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+
+.shoppingTotal strong {
+  color: var(--ink);
+}
