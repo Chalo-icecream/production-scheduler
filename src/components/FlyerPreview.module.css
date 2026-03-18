@@ -25,7 +25,7 @@
 
 .hero {
   flex-shrink: 0;
-  margin-bottom: 40px;
+  margin-bottom: 56px;
 }
 
 .brand {
@@ -51,7 +51,7 @@
 .flavors {
   flex: 1;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   padding-bottom: 36px;
 }
 
@@ -158,24 +158,24 @@
 }
 
 .halfPage .hero {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .halfPage .brand {
-  font-size: 85px;
-  margin-bottom: 10px;
+  font-size: 130px;
+  margin-bottom: 12px;
 }
 
 .halfPage .tagline {
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .halfPage .flavorList {
-  gap: 6px;
+  gap: 8px;
 }
 
 .halfPage .flavorLine {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .halfPage .flavors {
