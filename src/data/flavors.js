@@ -277,7 +277,7 @@ export const FLAVORS = [
     id: "calcutta",
     name: "Calcutta",
     city: "Calcutta",
-    descriptor: "Chai · Honey Milk Jam · Brown Butter Tahini Fudge",
+    descriptor: "Chai · Honey Milk Jam · Tahini Chocolate Fudge",
     timeline_days: 3,
     components: [
       {
