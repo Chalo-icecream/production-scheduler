@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import FlyerPreview from './FlyerPreview.jsx'
 import styles from './FlyerGenerator.module.css'
+import { FLAVORS } from '../data/flavors.js'
 
 // ── Static data ───────────────────────────────────────────────────────────────
 
@@ -13,12 +14,17 @@ const NEIGHBORHOODS = [
   { value: 'glendale',      label: 'Glendale / La Crescenta'    },
 ]
 
-export const FLYER_FLAVORS = [
-  { id: 'kerala',   name: 'Kerala',   lead: 'Curry leaf.',    rest: 'Pineapple. Ginger.'                             },
-  { id: 'goa',      name: 'Goa',      lead: 'Passionfruit.',  rest: 'Jalebi. Coconut.'                              },
-  { id: 'calcutta', name: 'Calcutta', lead: 'Chai.',          rest: 'Honey Milk Jam. Tahini Chocolate Fudge.'       },
-  { id: 'shimla',   name: 'Shimla',   lead: 'Honeydew.',      rest: 'Genmaicha. Cucumber Jalapeño.'                 },
-]
+// Derived from flavors.js so descriptor changes stay in sync automatically.
+// Descriptor format: "Lead · Part two · Part three"  →  lead: "Lead.", rest: "Part two. Part three."
+export const FLYER_FLAVORS = FLAVORS.map(f => {
+  const parts = f.descriptor.split(' · ')
+  return {
+    id:   f.id,
+    name: f.name,
+    lead: parts[0] + '.',
+    rest: parts.slice(1).join('. ') + '.',
+  }
+})
 
 function todayISO() {
   const d = new Date()
