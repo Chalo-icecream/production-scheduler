@@ -16,7 +16,7 @@ const NEIGHBORHOODS = [
 export const FLYER_FLAVORS = [
   { id: 'kerala',   name: 'Kerala',   lead: 'Curry leaf.',    rest: 'Pineapple. Ginger.'                             },
   { id: 'goa',      name: 'Goa',      lead: 'Passionfruit.',  rest: 'Jalebi. Coconut.'                              },
-  { id: 'calcutta', name: 'Calcutta', lead: 'Chai.',          rest: 'Honey Milk Jam. Brown Butter Tahini Fudge.'    },
+  { id: 'calcutta', name: 'Calcutta', lead: 'Chai.',          rest: 'Honey Milk Jam. Tahini Chocolate Fudge.'       },
   { id: 'shimla',   name: 'Shimla',   lead: 'Honeydew.',      rest: 'Genmaicha. Cucumber Jalapeño.'                 },
 ]
 
