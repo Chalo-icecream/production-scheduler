@@ -159,9 +159,9 @@ export default function FlyerPreview({ form, flavors }) {
               <ul className={styles.flavorList}>
                 {activeFlavors.map(f => (
                   <li key={f.id} className={styles.flavorLine} style={{ color: c.body }}>
-                    <strong className={styles.flavorLead}>{f.lead}</strong>
-                    {' '}
-                    <span className={styles.flavorRest}>{f.rest}</span>
+                    <strong className={styles.flavorName}>{f.name}</strong>
+                    {' — '}
+                    <span className={styles.flavorIngredients}>{f.ingredients}</span>
                   </li>
                 ))}
               </ul>
@@ -170,26 +170,32 @@ export default function FlyerPreview({ form, flavors }) {
 
           {/* ── Order card ────────────────────────────────────────── */}
           <section className={styles.orderCard} style={{ background: c.cardBg }}>
-            <p className={styles.orderLabel} style={{ color: c.cardMuted }}>
-              Order on Hotplate
-            </p>
-            <canvas ref={canvasRef} className={styles.qrCanvas} />
-            <p className={styles.orderUrl} style={{ color: c.cardText }}>
-              hotplate.com/chaloicecream
-            </p>
-            <div className={styles.orderMeta} style={{ color: c.cardMuted }}>
+            <div className={styles.orderInfo}>
+              <p className={styles.orderLabel} style={{ color: c.cardMuted }}>
+                Order on Hotplate
+              </p>
               {form.dropDate && (
-                <span>Drop: {formatDropDate(form.dropDate)}</span>
+                <p className={styles.orderMetaLine} style={{ color: c.cardText }}>
+                  Drop: {formatDropDate(form.dropDate)}
+                </p>
               )}
               {form.location && (
-                <span>Pickup: {form.location}</span>
+                <p className={styles.orderMetaLine} style={{ color: c.cardText }}>
+                  Pickup: {form.location}
+                </p>
+              )}
+              {form.discountCode && (
+                <p className={styles.discountCode} style={{ color: c.cardText }}>
+                  Use code <strong>{form.discountCode.toUpperCase()}</strong> for 10% off
+                </p>
               )}
             </div>
-            {form.discountCode && (
-              <p className={styles.discountCode} style={{ color: c.cardText }}>
-                Use code <strong>{form.discountCode.toUpperCase()}</strong> for 10% off
+            <div className={styles.orderQr}>
+              <canvas ref={canvasRef} className={styles.qrCanvas} />
+              <p className={styles.orderUrl} style={{ color: c.cardText }}>
+                hotplate.com/chaloicecream
               </p>
-            )}
+            </div>
           </section>
 
         </div>

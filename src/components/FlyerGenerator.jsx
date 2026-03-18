@@ -15,16 +15,12 @@ const NEIGHBORHOODS = [
 ]
 
 // Derived from flavors.js so descriptor changes stay in sync automatically.
-// Descriptor format: "Lead · Part two · Part three"  →  lead: "Lead.", rest: "Part two. Part three."
-export const FLYER_FLAVORS = FLAVORS.map(f => {
-  const parts = f.descriptor.split(' · ')
-  return {
-    id:   f.id,
-    name: f.name,
-    lead: parts[0] + '.',
-    rest: parts.slice(1).join('. ') + '.',
-  }
-})
+// Descriptor format: "Lead · Part two · Part three"  →  ingredients: "lead, part two, part three"
+export const FLYER_FLAVORS = FLAVORS.map(f => ({
+  id:          f.id,
+  name:        f.name,
+  ingredients: f.descriptor.split(' · ').map(p => p.toLowerCase()).join(', '),
+}))
 
 function todayISO() {
   const d = new Date()
