@@ -15,6 +15,7 @@
   font-family: 'Outfit', sans-serif;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 64px 72px 56px;
   box-sizing: border-box;
   /* Drop shadow visible on screen (not in print) */
@@ -25,7 +26,6 @@
 
 .hero {
   flex-shrink: 0;
-  margin-bottom: 56px;
 }
 
 .brand {
@@ -49,10 +49,8 @@
 /* ── Flavor list ──────────────────────────────────────────────────────────── */
 
 .flavors {
-  flex: 1;
   display: flex;
-  align-items: center;
-  padding-bottom: 36px;
+  align-items: flex-start;
 }
 
 .flavorList {
@@ -155,6 +153,8 @@
 
 .halfPage {
   padding: 32px 48px 28px;
+  /* Restore original stacking for half page — flex:1 on .flavors handles spacing */
+  justify-content: flex-start;
 }
 
 .halfPage .hero {
@@ -179,6 +179,8 @@
 }
 
 .halfPage .flavors {
+  flex: 1;
+  align-items: center;
   padding-bottom: 16px;
 }
 
