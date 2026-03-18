@@ -14,13 +14,17 @@ const NEIGHBORHOODS = [
   { value: 'glendale',      label: 'Glendale / La Crescenta'    },
 ]
 
+// Flyer order: Kerala, Goa, Calcutta, Shimla.
 // Derived from flavors.js so descriptor changes stay in sync automatically.
-// Descriptor format: "Lead · Part two · Part three"  →  ingredients: "lead, part two, part three"
-export const FLYER_FLAVORS = FLAVORS.map(f => ({
-  id:          f.id,
-  name:        f.name,
-  ingredients: f.descriptor.split(' · ').map(p => p.toLowerCase()).join(', '),
-}))
+const FLYER_ORDER = ['kerala', 'goa', 'calcutta', 'shimla']
+export const FLYER_FLAVORS = FLYER_ORDER
+  .map(id => FLAVORS.find(f => f.id === id))
+  .filter(Boolean)
+  .map(f => ({
+    id:          f.id,
+    name:        f.name,
+    ingredients: f.descriptor.split(' · ').map(p => p.toLowerCase()).join(', '),
+  }))
 
 function todayISO() {
   const d = new Date()

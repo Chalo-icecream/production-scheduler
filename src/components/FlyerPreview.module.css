@@ -44,21 +44,6 @@
   line-height: 1.45;
   letter-spacing: -0.01em;
   max-width: 520px;
-  margin-bottom: 36px;
-}
-
-.divider {
-  height: 1px;
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.categoryLabel {
-  font-family: 'Outfit', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
 }
 
 /* ── Flavor list ──────────────────────────────────────────────────────────── */
@@ -99,35 +84,26 @@
   font-style: italic;
 }
 
-/* ── Order card ───────────────────────────────────────────────────────────── */
+/* ── Bottom row ───────────────────────────────────────────────────────────── */
 
-.orderCard {
+/* Sits directly on the flyer background — no card wrapper.
+   QR card is a small white box on the right only. */
+.bottomRow {
   flex-shrink: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 28px 36px;
-  border-radius: 12px;
 }
 
-.orderInfo {
+.bottomMeta {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
-.orderLabel {
-  font-family: 'Outfit', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-
-.orderMetaLine {
+.metaLine {
   font-family: 'Outfit', sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -138,7 +114,7 @@
   font-family: 'Outfit', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 .discountCode strong {
@@ -146,30 +122,66 @@
   letter-spacing: 0.06em;
 }
 
-.orderQr {
+/* White card sits only behind the QR image + URL */
+.qrCard {
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 12px 16px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex-shrink: 0;
 }
 
 .qrCanvas {
   display: block;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
-.orderUrl {
+.qrUrl {
   font-family: 'Outfit', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
+  color: #1A1A1A;
   letter-spacing: -0.01em;
 }
 
 /* ── Half-page overrides ──────────────────────────────────────────────────── */
-/* Applied when form.size === 'half'; flyer height is 528px (5.5in).
-   We tighten spacing and shrink the CHALO headline. */
 
-/* Since we can't use props in CSS Modules easily, the half-page scaling
-   is handled naturally: the flyer is 816×528, the scale wrapper compresses
-   everything proportionally via the scale transform. */
+/* .halfPage is added to the flyer root div when size === 'half'.
+   Compound selectors here scope correctly in CSS Modules — both
+   .halfPage and the child class names are scoped to this file. */
+
+.halfPage {
+  padding: 32px 48px 28px;
+}
+
+.halfPage .hero {
+  margin-bottom: 16px;
+}
+
+.halfPage .brand {
+  font-size: 85px;
+  margin-bottom: 10px;
+}
+
+.halfPage .tagline {
+  font-size: 12px;
+}
+
+.halfPage .flavorList {
+  gap: 6px;
+}
+
+.halfPage .flavorLine {
+  font-size: 16px;
+}
+
+.halfPage .flavors {
+  padding-bottom: 16px;
+}
+
+.halfPage .qrCard {
+  padding: 8px 10px 6px;
+}
