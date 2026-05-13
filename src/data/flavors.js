@@ -9,6 +9,8 @@
 //   "pantry"       — dry goods/shelf-stable
 //   "specialty"    — Indian grocery / specialty store
 //   "produce"      — fresh produce
+//   "frozen"       — store-bought frozen goods (frozen fruit, etc.)
+//   "freezer"      — pre-made item from the home freezer; not purchased, note on shopping list
 //   "from_make_ahead" — drawn from a make_ahead component; not purchased, not on shopping list
 
 // Known unit costs (used for cost estimation and buy-quantity suggestions)
@@ -1048,6 +1050,235 @@ export const FLAVORS = [
       },
     ],
   },
+
+  // ─────────────────────────────────────────────────────────────────
+  // BLACK FOREST — Chocolate miso base, cherry ripple, cake pieces
+  // Timeline: 2 days
+  // ─────────────────────────────────────────────────────────────────
+  {
+    id: "black_forest",
+    name: "Black Forest",
+    city: "Black Forest",
+    descriptor: "Chocolate Miso · Sweet Cherry Ripple · Chocolate Cake",
+    timeline_days: 2,
+    components: [
+      {
+        // Morning setup — thawed cherries consumed by cherry_ripple via from_make_ahead
+        id: "black_forest_cherry_thaw",
+        name: "Cherry Thaw Setup",
+        day: 1,
+        make_ahead: false,
+        notes: "Morning setup only. Place frozen cherries in a colander set over a bowl. Refrigerate all day. Press gently before roasting to drain — reserve the drained juice (up to 2 Tbsp used to adjust ripple consistency if needed).",
+        ingredients: [
+          {
+            id: "black_forest_cherry_thaw_cherries",
+            name: "Frozen sweet dark cherries (e.g. Bing, dark sweet)",
+            amount_per_quart: 340,
+            unit: "g",
+            source: "frozen",
+            cost_per_unit: null,
+            notes: "340g is the drained weight target (~2 cups). Undrained cherries produce watery, icy compote — do not skip draining.",
+          },
+        ],
+      },
+      {
+        id: "black_forest_chocolate_sauce",
+        name: "Chocolate Sauce",
+        day: 1,
+        make_ahead: false,
+        notes: "Make before starting the ice cream base. Goes into the cream cheese–miso bowl. 5-minute undisturbed rest after adding chocolate is essential — do not stir early.",
+        ingredients: [
+          {
+            id: "black_forest_sauce_cocoa",
+            name: "Dutch-process cocoa powder, unsweetened",
+            amount_per_quart: 50,
+            unit: "g",
+            source: "specialty",
+            cost_per_unit: null,
+            notes: "Dutch-process preferred — deeper, less acidic than natural cocoa.",
+          },
+          {
+            id: "black_forest_sauce_coffee",
+            name: "Brewed coffee, strong — cooled to room temp",
+            amount_per_quart: 4,
+            unit: "fl_oz",
+            source: "pantry",
+            cost_per_unit: null,
+            notes: "Amplifies chocolate without adding coffee flavour. Must be room temperature or cold before adding to sauce.",
+          },
+          {
+            id: "black_forest_sauce_sugar",
+            name: "Caster sugar (sauce portion)",
+            amount_per_quart: 100,
+            unit: "g",
+            source: "pantry",
+            cost_per_unit: null,
+            notes: "Sauce sugar only — separate from base sugar. Total across both: 200g.",
+          },
+          {
+            id: "black_forest_sauce_chocolate",
+            name: "Bittersweet chocolate, 55–70% cacao — finely chopped",
+            amount_per_quart: 42,
+            unit: "g",
+            source: "specialty",
+            cost_per_unit: null,
+            notes: "Added off heat. Do not stir for 5 minutes — rest lets it melt fully without seizing.",
+          },
+        ],
+      },
+      {
+        id: "black_forest_base",
+        name: "Chocolate Miso Ice Cream Base",
+        day: 1,
+        make_ahead: false,
+        notes: "Cream is 10 fl oz — reduced per Jeni's chocolate variation, non-negotiable. Miso into cream cheese bowl only, never into hot milk. Strain finished base before chilling.",
+        ingredients: [
+          {
+            id: "black_forest_base_milk",
+            // 16 fl oz total: 2 fl oz cold for slurry + 14 fl oz into pot
+            name: "Whole milk",
+            amount_per_quart: 16,
+            unit: "fl_oz",
+            source: "fresh_only",
+            cost_per_unit: null,
+            notes: "Divide before starting: 2 fl oz cold for cornstarch slurry, 14 fl oz into the pot.",
+          },
+          {
+            id: "black_forest_base_cream",
+            name: "Heavy cream",
+            amount_per_quart: 10,
+            unit: "fl_oz",
+            source: "fresh_only",
+            cost_per_unit: null,
+            notes: "Reduced from canonical 12 fl oz — chocolate sauce compensates. Do not adjust.",
+          },
+          {
+            id: "black_forest_base_sugar",
+            name: "Caster sugar (base portion)",
+            amount_per_quart: 100,
+            unit: "g",
+            source: "pantry",
+            cost_per_unit: null,
+            notes: "Base sugar only. Plus 100g in sauce = 200g total — standard for Jeni's chocolate variation.",
+          },
+          {
+            id: "black_forest_base_honey",
+            // ~2 Tbsp / ~42g
+            name: "Honey, mild (replaces corn syrup)",
+            amount_per_quart: 0.75,
+            unit: "fl_oz",
+            source: "pantry",
+            cost_per_unit: null,
+            notes: "~2 Tbsp / ~42g. Standard Chalo house substitution.",
+          },
+          {
+            id: "black_forest_base_cornstarch",
+            name: "Cornstarch",
+            amount_per_quart: 12,
+            unit: "g",
+            source: "pantry",
+            cost_per_unit: null,
+            notes: "Mixed cold with reserved 2 fl oz milk. Milk must be cold — hot slurry pre-gelatinises.",
+          },
+          {
+            id: "black_forest_base_cream_cheese",
+            name: "Full-fat cream cheese — softened to room temperature",
+            amount_per_quart: 42,
+            unit: "g",
+            source: "fresh_only",
+            cost_per_unit: null,
+            notes: "Must be fully at room temp before starting. Cold cream cheese lumps.",
+          },
+          {
+            id: "black_forest_base_miso",
+            name: "White shiro miso",
+            amount_per_quart: 30,
+            unit: "g",
+            source: "specialty",
+            cost_per_unit: null,
+            notes: "Whisked into cream cheese bowl BEFORE chocolate sauce and BEFORE hot base is added. Never boil or overheat miso.",
+          },
+          {
+            id: "black_forest_base_salt",
+            name: "Fine sea salt",
+            amount_per_quart: 1.5,
+            unit: "g",
+            source: "pantry",
+            cost_per_unit: null,
+            notes: "Standard ¼ tsp. Miso adds additional sodium — taste finished base before churning. Should taste pleasantly salty-rich, not overtly salty.",
+          },
+        ],
+      },
+      {
+        id: "black_forest_cherry_ripple",
+        name: "Sweet Cherry Ripple",
+        day: 1,
+        make_ahead: false,
+        notes: "Roast at 205°C / 400°F, stirring every 15 min, until juices are thick, bubbling, and glossy (30–40 min). If too thick: add 1–2 Tbsp reserved cherry juice. Cool to room temp then refrigerate — must be fully cold before assembly.",
+        ingredients: [
+          {
+            id: "black_forest_ripple_cherries",
+            name: "Frozen sweet dark cherries — thawed and drained",
+            amount_per_quart: 340,
+            unit: "g",
+            source: "from_make_ahead",
+            from_component: "black_forest_cherry_thaw",
+            cost_per_unit: null,
+            notes: "Drained weight. Already thawing from morning setup.",
+          },
+          {
+            id: "black_forest_ripple_sugar",
+            name: "Caster sugar",
+            amount_per_quart: 50,
+            unit: "g",
+            source: "pantry",
+            cost_per_unit: null,
+            notes: "Do not reduce — sugar also lowers freezing point of compote, keeping it scoopable.",
+          },
+          {
+            id: "black_forest_ripple_cornstarch",
+            name: "Cornstarch",
+            amount_per_quart: 5,
+            unit: "g",
+            source: "pantry",
+            cost_per_unit: null,
+            notes: "Tossed with cherries before roasting. Prevents icy streaks. Do not skip or substitute with reduction alone.",
+          },
+          {
+            // 15ml ≈ 0.5 fl oz
+            id: "black_forest_ripple_lemon",
+            name: "Lemon juice, fresh",
+            amount_per_quart: 0.5,
+            unit: "fl_oz",
+            source: "produce",
+            cost_per_unit: null,
+            notes: "~1 Tbsp / 15ml. Frozen sweet cherries taste flat without acid — do not omit.",
+          },
+        ],
+      },
+      {
+        id: "black_forest_cake_prep",
+        name: "Chocolate Cake Pieces",
+        day: 1,
+        make_ahead: false,
+        notes: "Cut while semi-frozen for clean edges. Dry at 150°C / 300°F for 20–25 min — surface should feel dry, not crispy. Re-freeze at least 30 min before layering.",
+        ingredients: [
+          {
+            id: "black_forest_cake_cake",
+            name: "Dense chocolate cake — unfrosted, from freezer",
+            amount_per_quart: 150,
+            unit: "g",
+            source: "freezer",
+            cost_per_unit: null,
+            notes: "~1 cup cut into ½-inch / 1.25cm rough cubes. Dense cake only — airy sponge crumbles to mush. Mix of small crumbles and larger chunks is fine.",
+          },
+        ],
+      },
+      // DAY 2: Churn base, layer in thirds: 1/3 ice cream → 1/3 cherry ripple → half cake pieces. Repeat.
+      // Final layer: remaining ice cream + remaining cherry ripple.
+      // Ripple with 3–4 slow figure-of-eight passes only. Freeze minimum 4 hours.
+    ],
+  },
 ];
 
 // ─── Convenience lookups ──────────────────────────────────────────────────────
@@ -1084,6 +1315,18 @@ export const SOURCING_GROUPS = [
     id: "pantry",
     label: "Pantry",
     sublabel: null,
+    warning: null,
+  },
+  {
+    id: "frozen",
+    label: "Frozen",
+    sublabel: "Store-bought frozen goods — buy in advance, keep frozen",
+    warning: null,
+  },
+  {
+    id: "freezer",
+    label: "From freezer",
+    sublabel: "Pre-made item from your freezer — prepare in advance",
     warning: null,
   },
 ];

@@ -21,6 +21,12 @@ export const COMPONENT_TIMES = {
   goa_jalebi_crumble:          { active: 10 },
   goa_coconut_base:            { active: 35 },
   goa_mix_ins:                 { active: 15 },
+  // ── Black Forest ─────────────────────────────────────────────────────
+  black_forest_cherry_thaw:    { active: 5  },
+  black_forest_chocolate_sauce:{ active: 15 },
+  black_forest_base:           { active: 40 },
+  black_forest_cherry_ripple:  { active: 20 },
+  black_forest_cake_prep:      { active: 15 },
 }
 
 export const CHURN_ACTIVE_MIN = 10
