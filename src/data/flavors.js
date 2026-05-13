@@ -1279,6 +1279,221 @@ export const FLAVORS = [
       // Ripple with 3–4 slow figure-of-eight passes only. Freeze minimum 4 hours.
     ],
   },
+
+  // ─────────────────────────────────────────────────────────────────
+  // FIG LEAF — Fig leaf infused base, pistachio ribbon, Seville orange
+  // Timeline: 2 days
+  // ─────────────────────────────────────────────────────────────────
+  {
+    id: "fig_leaf",
+    name: "Fig Leaf",
+    city: "Fig Leaf",
+    descriptor: "Fig Leaf · Pistachio Paste Ribbon · Seville Orange",
+    timeline_days: 2,
+    components: [
+      {
+        // Phase 1 dairy purchase covers ALL milk+cream for this flavor.
+        // Base references infused dairy + cold slurry milk both via from_make_ahead
+        // to prevent shopping list double-count.
+        id: "fig_leaf_phase1",
+        name: "Fig Leaf Infusion — Phase 1 (Warm Steep)",
+        day: 1,
+        make_ahead: false,
+        notes: "Evening before churning. Toast leaves in dry skillet 2–3 min per side until fragrant and papery (or 300°F oven, 8 min). Warm milk + cream to ~150°F, steep covered 30–40 min. Do not simmer. Strain and press spent leaves — discard. Proceed immediately to Phase 2.",
+        ingredients: [
+          {
+            id: "fig_leaf_phase1_leaves",
+            name: "Fresh backyard fig leaves — Phase 1",
+            amount_per_quart: 8,
+            unit: "leaves",
+            source: "produce",
+            cost_per_unit: null,
+            notes: "Medium leaves. Remove thick central stems; tear each into 3–4 pieces. Use bright green, undamaged leaves only. Discarded after Phase 1 straining.",
+          },
+          {
+            // 12 fl oz total: 10 fl oz into infusion pot + 2 fl oz reserved cold for slurry
+            id: "fig_leaf_phase1_milk",
+            name: "Whole milk (10 fl oz for infusion + 2 fl oz reserved cold for slurry)",
+            amount_per_quart: 12,
+            unit: "fl_oz",
+            source: "fresh_only",
+            cost_per_unit: null,
+            notes: "10 fl oz into the infusion pot. Reserve 2 fl oz cold for the Day 2 cornstarch slurry — keep separate in fridge.",
+          },
+          {
+            id: "fig_leaf_phase1_cream",
+            name: "Heavy cream",
+            amount_per_quart: 8,
+            unit: "fl_oz",
+            source: "fresh_only",
+            cost_per_unit: null,
+            notes: "All into the infusion pot alongside the 10 fl oz milk.",
+          },
+        ],
+      },
+      {
+        id: "fig_leaf_phase2",
+        name: "Fig Leaf Infusion — Phase 2 (Cold Steep Overnight)",
+        day: 1,
+        make_ahead: false,
+        notes: "Immediately after Phase 1 straining. Toast 8 fresh leaves (same method). Add to warm strained cream. Cool uncovered ~45–60 min, then transfer — leaves in — to sealed container. Refrigerate minimum 8 hours, up to 24. Strain Day 2 morning; press leaves firmly. Yield: ~17–18 fl oz infused dairy.",
+        ingredients: [
+          {
+            id: "fig_leaf_phase2_leaves",
+            name: "Fresh backyard fig leaves — Phase 2",
+            amount_per_quart: 8,
+            unit: "leaves",
+            source: "produce",
+            cost_per_unit: null,
+            notes: "Fresh leaves — not the spent Phase 1 leaves. Same prep: stems removed, torn into 3–4 pieces, toasted. These do the overnight extraction.",
+          },
+        ],
+      },
+      {
+        id: "fig_leaf_pistachio_ribbon",
+        name: "Pistachio Paste Ribbon",
+        day: 2,
+        make_ahead: false,
+        notes: "Make churning day before base cook. Warm gently over bain marie or in 10-second microwave bursts until slow-ribboning. Refrigerate until layering — remove 10–15 min before use. Layer FIRST before marmalade drizzle. If ribbon freezes hard next batch, increase honey to 0.75 fl oz.",
+        ingredients: [
+          {
+            id: "fig_leaf_ribbon_pistachio",
+            name: "Pistachio Factory 100% pistachio paste",
+            amount_per_quart: 90,
+            unit: "g",
+            source: "specialty",
+            cost_per_unit: null,
+            notes: "Pistachio Factory brand — 100% pistachios, no added sugar or oil. No substitute confirmed.",
+          },
+          {
+            id: "fig_leaf_ribbon_honey",
+            name: "Honey, mild (acacia, wildflower, or clover)",
+            amount_per_quart: 0.5,
+            unit: "fl_oz",
+            source: "pantry",
+            cost_per_unit: null,
+            notes: "Loosens paste and prevents ribbon from freezing solid.",
+          },
+          {
+            id: "fig_leaf_ribbon_salt",
+            name: "Fine sea salt",
+            amount_per_quart: 0.5,
+            unit: "g",
+            source: "pantry",
+            cost_per_unit: null,
+            notes: "Small pinch — approx. 1/16 tsp. Rounds the pistachio flavour.",
+          },
+        ],
+      },
+      {
+        id: "fig_leaf_marmalade",
+        name: "Seville Orange Marmalade Drizzle",
+        day: 2,
+        make_ahead: false,
+        notes: "Stir marmalade and honey until combined. Keep at room temperature until layering — do not refrigerate. Start at 30g; taste against base before increasing to 45g. Apply OVER pistachio ribbon, not directly on ice cream. Should register as a bright bitter finish, not a dominant flavour.",
+        ingredients: [
+          {
+            id: "fig_leaf_marmalade_marmalade",
+            name: "365 Seville orange marmalade, fine-cut",
+            amount_per_quart: 30,
+            unit: "g",
+            source: "pantry",
+            cost_per_unit: null,
+            notes: "Start at 30g — taste against base before increasing to 45g. Bitter orange only — not sweet orange. If overpowering, reduce to 20–25g next batch.",
+          },
+          {
+            id: "fig_leaf_marmalade_honey",
+            name: "Honey, mild",
+            amount_per_quart: 0.25,
+            unit: "fl_oz",
+            source: "pantry",
+            cost_per_unit: null,
+            notes: "Keeps drizzle soft and scoopable at freezer temperature. If marmalade forms a hard candy layer, increase to 0.4 fl oz next batch.",
+          },
+        ],
+      },
+      {
+        // Cream cheese blended with 4 fl oz hot base in blender — unique method vs. other Chalo flavors
+        id: "fig_leaf_base",
+        name: "Fig Leaf Ice Cream Base",
+        day: 2,
+        make_ahead: false,
+        notes: "Strain Phase 2 leaves first; press firmly. Use all strained infused dairy in place of standard milk+cream. Cream cheese method differs from other Chalo flavors: blend 4 fl oz hot base + cream cheese in blender until smooth, return to pot. Taste cold base before churning — fig leaf should be clearly present. Freezing dulls flavour 20–30%.",
+        ingredients: [
+          {
+            id: "fig_leaf_base_dairy",
+            name: "Strained fig leaf-infused dairy (from overnight infusion)",
+            amount_per_quart: 18,
+            unit: "fl_oz",
+            source: "from_make_ahead",
+            from_component: "fig_leaf_phase1",
+            cost_per_unit: null,
+            notes: "~17–18 fl oz yield after pressing. Use all of it. Do not top up with fresh dairy.",
+          },
+          {
+            id: "fig_leaf_base_sugar",
+            name: "Granulated sugar",
+            amount_per_quart: 130,
+            unit: "g",
+            source: "pantry",
+            cost_per_unit: null,
+            notes: "130g — verified against v2 PDF.",
+          },
+          {
+            // ~2 Tbsp / ~30ml
+            id: "fig_leaf_base_honey",
+            name: "Honey, mild (replaces corn syrup)",
+            amount_per_quart: 1,
+            unit: "fl_oz",
+            source: "pantry",
+            cost_per_unit: null,
+            notes: "~2 Tbsp / ~30ml. Mild variety: acacia, wildflower, or clover.",
+          },
+          {
+            id: "fig_leaf_base_cornstarch",
+            name: "Cornstarch",
+            amount_per_quart: 15,
+            unit: "g",
+            source: "pantry",
+            cost_per_unit: null,
+            notes: "Mixed cold with the reserved 2 fl oz whole milk (set aside from Phase 1). Milk must be cold.",
+          },
+          {
+            // Already counted in Phase 1's 12 fl oz purchase — not an additional purchase
+            id: "fig_leaf_base_slurry_milk",
+            name: "Whole milk — cold, for cornstarch slurry only",
+            amount_per_quart: 2,
+            unit: "fl_oz",
+            source: "from_make_ahead",
+            from_component: "fig_leaf_phase1",
+            cost_per_unit: null,
+            notes: "The 2 fl oz reserved from the 12 fl oz Phase 1 purchase. Keep refrigerated until slurry time.",
+          },
+          {
+            id: "fig_leaf_base_cream_cheese",
+            name: "Full-fat cream cheese — softened to room temperature",
+            amount_per_quart: 42,
+            unit: "g",
+            source: "fresh_only",
+            cost_per_unit: null,
+            notes: "Room temperature before starting. Blended with 4 fl oz hot base in blender — not whisked directly into pot.",
+          },
+          {
+            id: "fig_leaf_base_salt",
+            name: "Fine sea salt",
+            amount_per_quart: 0.75,
+            unit: "g",
+            source: "pantry",
+            cost_per_unit: null,
+            notes: "⅛ tsp — half the Chalo standard. Pistachio paste and Seville orange both carry salt; do not increase.",
+          },
+        ],
+      },
+      // DAY 2 AFTERNOON: Churn 20–25 min to soft-serve. Layer in thirds.
+      // Each layer: 1/3 ice cream → pistachio ribbon in parallel lines → marmalade drizzle over pistachio.
+      // Do not swirl or fold. Press parchment onto surface. Freeze minimum 4 hours.
+    ],
+  },
 ];
 
 // ─── Convenience lookups ──────────────────────────────────────────────────────

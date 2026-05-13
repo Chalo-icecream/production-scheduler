@@ -27,6 +27,12 @@ export const COMPONENT_TIMES = {
   black_forest_base:           { active: 40 },
   black_forest_cherry_ripple:  { active: 20 },
   black_forest_cake_prep:      { active: 15 },
+  // ── Fig Leaf ─────────────────────────────────────────────────────────
+  fig_leaf_phase1:             { active: 20 },
+  fig_leaf_phase2:             { active: 15 },
+  fig_leaf_pistachio_ribbon:   { active: 10 },
+  fig_leaf_marmalade:          { active: 5  },
+  fig_leaf_base:               { active: 35 },
 }
 
 export const CHURN_ACTIVE_MIN = 10
